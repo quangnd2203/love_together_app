@@ -6,9 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 // import '../service/wifi_service.dart';
 // import 'package:dio/dio.dart';
 
-
 class FirebaseRepository {
-
   factory FirebaseRepository() {
     _instance ??= FirebaseRepository._();
     return _instance!;
@@ -20,11 +18,11 @@ class FirebaseRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<void> verifyPhoneNumber(
-      String phoneNumber,
-      PhoneVerificationCompleted verificationCompleted,
-      PhoneVerificationFailed verificationFailed,
-      PhoneCodeSent codeSent,
-      PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout) async {
+      {required String phoneNumber,
+      required PhoneVerificationCompleted verificationCompleted,
+      required PhoneVerificationFailed verificationFailed,
+      required PhoneCodeSent codeSent,
+      required PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout}) async {
     await _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         timeout: const Duration(seconds: 120),

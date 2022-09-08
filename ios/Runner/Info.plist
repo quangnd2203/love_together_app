@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>flutter$(APP_ID_SUFFIX)</string>
+	<string>Love Together</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,10 +22,41 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.48062921415-rvcgitg30ub59rjli53216poemrb24pi</string>
+				<string>com.googleusercontent.apps.722408477068-ohhpu6r6mlul1uj2h8u0m9k8atqokeol</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb$(APP_FACEBOOK_ID)</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>FacebookAppID</key>
+	<string>$(APP_FACEBOOK_ID)</string>
+	<key>FacebookClientToken</key>
+	<string>$(CLIENT_TOKEN)</string>
+	<key>FacebookDisplayName</key>
+	<string>{your-app-name}</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>
@@ -52,41 +83,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-
-    <!-- For Google Auth -->
-    <key>CFBundleURLTypes</key>
-    <array>
-    	<dict>
-    		<key>CFBundleTypeRole</key>
-    		<string>Editor</string>
-    		<key>CFBundleURLSchemes</key>
-    		<array>
-	            <string>com.googleusercontent.apps.722408477068-k64js2f2h643gjii0li4ub5pvj2rjag6</string>
-    			<string>com.googleusercontent.apps.722408477068-ohhpu6r6mlul1uj2h8u0m9k8atqokeol</string>
-    		</array>
-    	</dict>
-        <!-- For Facebook Auth -->
-    	<dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-              <string>fb$(APP_FACEBOOK_ID)</string>
-            </array>
-          </dict>
-    </array>
-    
-    <!-- For Google Auth -->
-    <key>FacebookAppID</key>
-    <string>$(APP_FACEBOOK_ID)</string>
-    <key>FacebookClientToken</key>
-    <string>$(CLIENT_TOKEN)</string>
-    <key>FacebookDisplayName</key>
-    <string>{your-app-name}</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-share-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
 </dict>
 </plist>

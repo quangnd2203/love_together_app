@@ -15,15 +15,7 @@ enum SocialType { facebook, google, twitter, apple }
 
 class LoginSocialResult {
   LoginSocialResult(
-      {this.accessToken,
-      this.code,
-      this.secretToken,
-      this.success = false,
-      this.email,
-      required this.type,
-      this.id,
-      this.avatar,
-      this.fullName});
+      {this.accessToken, this.code, this.secretToken, this.success = false, this.email, required this.type, this.id, this.avatar, this.fullName});
   bool success;
   dynamic id;
   String? code;
@@ -38,8 +30,7 @@ class LoginSocialResult {
 }
 
 class LoginSocialFirebaseResult {
-  LoginSocialFirebaseResult(
-      {this.success = false, this.msg, this.token, this.user});
+  LoginSocialFirebaseResult({this.success = false, this.msg, this.token, this.user});
   bool success;
   User? user;
   String? token;
@@ -60,28 +51,18 @@ class SocialService {
   // Username: test_jbijwbw_user@tfbnw.net
   // pass: Werewolf@
   Future<LoginSocialResult> signInFacebook() async {
-    final LoginSocialResult socialResult =
-        LoginSocialResult(type: SocialType.facebook);
+    final LoginSocialResult socialResult = LoginSocialResult(type: SocialType.facebook);
     try {
       await FacebookAuth.instance.logOut();
       final LoginResult result = await FacebookAuth.instance.login(
-        permissions: <String>[
-          'email',
-          'public_profile',
-          'user_birthday',
-          'user_friends',
-          'user_gender',
-          'user_link'
-        ],
+        permissions: <String>['email', 'public_profile', 'user_birthday', 'user_friends', 'user_gender', 'user_link'],
       );
       if (result.status != LoginStatus.success) {
         return socialResult;
       }
       final AccessToken? accessToken = result.accessToken;
-      if (accessToken == null)
-        throw Exception('AccessToken from facebook null!');
-      final Map<String, dynamic> user = await FacebookAuth.instance.getUserData(
-          fields: 'name,email,picture.width(200),birthday,friends,gender,link');
+      if (accessToken == null) throw Exception('AccessToken from facebook null!');
+      final Map<String, dynamic> user = await FacebookAuth.instance.getUserData(fields: 'name,email,picture.width(200),birthday,friends,gender,link');
       log('User: $user');
       socialResult.id = accessToken.userId;
       socialResult.accessToken = accessToken.token;
@@ -102,11 +83,9 @@ class SocialService {
         await GoogleSignIn().signOut();
       }
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null)
-        throw Exception('GoogleSignInAccount from google null!');
+      if (googleUser == null) throw Exception('GoogleSignInAccount from google null!');
       if (await GoogleSignIn().isSignedIn()) {
-        final GoogleSignInAuthentication googleAuth =
-            await googleUser.authentication;
+        final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
         result.id = googleUser.id;
         result.fullName = googleUser.displayName;
         result.email = googleUser.email;
@@ -121,8 +100,7 @@ class SocialService {
   }
 
   Future<LoginSocialResult> signInTwitter() async {
-    final LoginSocialResult result =
-        LoginSocialResult(type: SocialType.twitter);
+    final LoginSocialResult result = LoginSocialResult(type: SocialType.twitter);
     try {
       final TwitterLogin twitterLogin = TwitterLogin(
         // Consumer API keys
@@ -135,8 +113,7 @@ class SocialService {
         redirectURI: 'example://',
       );
       final AuthResult authResult = await twitterLogin.login();
-      if (authResult.status == null)
-        throw Exception('TwitterLogin status null!');
+      if (authResult.status == null) throw Exception('TwitterLogin status null!');
       switch (authResult.status!) {
         case TwitterLoginStatus.loggedIn:
           result.accessToken = authResult.authToken;
@@ -157,8 +134,7 @@ class SocialService {
 
   static Future<LoginSocialResult> signInWithApple() async {
     final LoginSocialResult result = LoginSocialResult(type: SocialType.apple);
-    final AuthorizationCredentialAppleID credential =
-        await SignInWithApple.getAppleIDCredential(
+    final AuthorizationCredentialAppleID credential = await SignInWithApple.getAppleIDCredential(
       scopes: <AppleIDAuthorizationScopes>[
         AppleIDAuthorizationScopes.email,
         AppleIDAuthorizationScopes.fullName,
@@ -167,8 +143,7 @@ class SocialService {
     result.code = credential.authorizationCode;
     if (credential.identityToken != null) {
       result.accessToken = credential.identityToken;
-      result.fullName =
-          (credential.givenName ?? '') + (credential.familyName ?? '');
+      result.fullName = (credential.givenName ?? '') + (credential.familyName ?? '');
     }
     print(credential);
 
@@ -230,7 +205,7 @@ class SocialServiceFirebase {
     if (authCredential != null) {
       try {
         userCredential = await _auth.signInWithCredential(authCredential);
-        result.token = (await userCredential.user!.getIdTokenResult()).token;
+        result.token = await userCredential.user!.getIdToken();
         result.user = userCredential.user;
         result.success = true;
       } catch (e) {
@@ -251,9 +226,8 @@ class SocialServiceFirebase {
     final GoogleSignInAccount? result = await googleLogin.signIn();
     final GoogleSignInAuthentication? auth = await result?.authentication;
     if (auth != null) {
-      print('${auth.accessToken}');
-      return GoogleAuthProvider.credential(
-          idToken: auth.idToken, accessToken: auth.accessToken);
+      print('accessToken: ${auth.accessToken}');
+      return GoogleAuthProvider.credential(idToken: auth.idToken, accessToken: auth.accessToken);
     }
 
     return null;
@@ -284,13 +258,10 @@ class SocialServiceFirebase {
     final String rawNonce = generateNonce();
     final String nonce = sha256ofString(rawNonce);
 
-    final AuthorizationCredentialAppleID credential =
-        await SignInWithApple.getAppleIDCredential(
-            scopes: <AppleIDAuthorizationScopes>[
-          AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
-        ],
-            nonce: nonce);
+    final AuthorizationCredentialAppleID credential = await SignInWithApple.getAppleIDCredential(scopes: <AppleIDAuthorizationScopes>[
+      AppleIDAuthorizationScopes.email,
+      AppleIDAuthorizationScopes.fullName,
+    ], nonce: nonce);
 
     if (credential.identityToken != null)
       authCredential = OAuthProvider('apple.com').credential(
@@ -303,11 +274,9 @@ class SocialServiceFirebase {
   /// Generates a cryptographically secure random nonce, to be included in a
   /// credential request.
   String generateNonce([int length = 32]) {
-    const String charset =
-        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+    const String charset = '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
     final Math.Random random = Math.Random.secure();
-    return List<String>.generate(
-        length, (_) => charset[random.nextInt(charset.length)]).join();
+    return List<String>.generate(length, (_) => charset[random.nextInt(charset.length)]).join();
   }
 
   /// Returns the sha256 hash of [input] in hex notation.

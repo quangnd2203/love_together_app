@@ -1,9 +1,13 @@
 import 'dart:async';
+import 'dart:developer';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import '../../resources/resources.dart';
 import '../ui.dart';
 
 class NavigationController extends BaseController {
+  final FirebaseRepository firebaseRepository = FirebaseRepository();
+  final SocialServiceFirebase socialServiceFirebase = SocialServiceFirebase();
 
   RxList<TestModel> raw = <TestModel>[].obs;
 
@@ -12,19 +16,13 @@ class NavigationController extends BaseController {
   @override
   Future<void> onInit() async {
     super.onInit();
-    Timer.periodic(const Duration(seconds: 1), (Timer timer) {
-      count.value ++;
-      count.refresh();
-    });
-    await fetchTestApi();
   }
 
   Future<void> fetchTestApi() async {
     final NetworkState<List<TestModel>> networkState = await AuthRepository().testApi();
-    if(networkState.isSuccess){
+    if (networkState.isSuccess) {
       raw.assignAll(networkState.data!.toList());
       raw.refresh();
     }
   }
-
 }
