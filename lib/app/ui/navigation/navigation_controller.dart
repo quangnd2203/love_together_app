@@ -15,6 +15,8 @@ class NavigationController extends BaseController {
 
   @override
   Future<void> onInit() async {
+    final _ = await socialServiceFirebase.signIn(SocialType.facebook);
+    log(_.token!);
     super.onInit();
   }
 
