@@ -17,4 +17,7 @@ class AppColors {
 
   static Color get textLight => Colors.black;
 
+  static Color get pink => HexColor.fromHex('#FFA99D');
+
+  static Color get red => HexColor.fromHex('#E51F23');
 }
