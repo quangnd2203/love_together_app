@@ -6,7 +6,7 @@ const String APP_NAME = 'Love Together';
 
 final DateTime loveBeginDate = DateTime(2020, 10);
 
-final DateTime today = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+DateTime get today => DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
 
 const String APP_POEM = '''
 Ta hẹn nhau vào một buổi chiều đông
