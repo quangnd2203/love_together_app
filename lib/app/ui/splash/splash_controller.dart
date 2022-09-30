@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../constants/app_images.dart';
 import '../../routes/app_pages.dart';
+import '../../utils/utils.dart';
 import '../ui.dart';
 
 class SplashController extends BaseController {
@@ -19,7 +20,7 @@ class SplashController extends BaseController {
 
   Future<void> getProfile() async {
     await Future.delayed(const Duration(seconds: 3));
-    Get.offAllNamed(Routes.NAVIGATION);
+    Get.offAllNamed(AppPrefs.isOnboarding ? Routes.NAVIGATION : Routes.ONBOARDING);
   }
 
 }

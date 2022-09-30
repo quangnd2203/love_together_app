@@ -9,6 +9,7 @@ class AppPages {
   AppPages._();
   static final List<GetPage> pages = <GetPage>[
     GetPage(name: Routes.SPLASH, page:()=> SplashScreen(), binding: SplashBinding()),
+    GetPage(name: Routes.ONBOARDING, page:()=> OnBoardingScreen(), binding: OnBoardingBinding()),
     GetPage(name: Routes.NAVIGATION, page:()=> NavigationScreen(), bindings: [NavigationBinding(), HomeBinding()]),
   ];
 }

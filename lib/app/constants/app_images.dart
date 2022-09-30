@@ -16,6 +16,9 @@ enum AppImages {
   homeHeart,
   homeAvatarMale,
   homeAvatarFemale,
+  onboardingOne,
+  onboardingTwo,
+  onboardingThree,
 }
 
 extension AppImageExtension on AppImages {
@@ -56,6 +59,12 @@ extension AppImageExtension on AppImages {
         return png('home_avatar_female');
       case AppImages.homeAvatarMale:
         return png('home_avatar_male');
+      case AppImages.onboardingOne:
+        return png('onboarding_one');
+      case AppImages.onboardingTwo:
+        return png('onboarding_two');
+      case AppImages.onboardingThree:
+        return png('onboarding_three');
     }
     return '';
   }

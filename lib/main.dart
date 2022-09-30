@@ -24,7 +24,7 @@ void main() async {
   await AppPrefs.initListener();
   await notificationInitialed();
   Logger().d('RUNNING IN $FLAVOR ENVIRONMENT'.toUpperCase());
-  print('FCM TOKEN: ${await FirebaseCloudMessaging.getFCMToken()}');
+  // print('FCM TOKEN: ${await FirebaseCloudMessaging.getFCMToken()}');
   runApp(const OverlaySupport(child: RestartWidget(child: App())));
 }
 

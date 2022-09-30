@@ -25,6 +25,10 @@ class AppPrefs {
 
   static String? get accessToken => _box.read('accessToken');
 
+  static set isOnboarding(bool? data) => _box.write('isOnboarding', data);
+
+  static bool get isOnboarding => _box.read<bool>('isOnboarding') ?? false;
+
   // static set user(Apps? _user) {
   //   _box.write('user', _user);
   // }
