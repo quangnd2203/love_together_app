@@ -51,23 +51,50 @@ flutter:
     - assets/images/svg/
 
   fonts:
-    - family: HKGrotesk
+    - family: Josefin
       fonts:
-        - asset: assets/fonts/hk-grotesk/HKGrotesk-Black.otf
-          weight: 900
-        - asset: assets/fonts/hk-grotesk/HKGrotesk-Black.otf
-          weight: 800
-        - asset: assets/fonts/hk-grotesk/HKGrotesk-Bold.otf
+        - asset: assets/fonts/jose-fin/JosefinSlab-Bold.ttf
           weight: 700
-        - asset: assets/fonts/hk-grotesk/HKGrotesk-SemiBold.otf
+        - asset: assets/fonts/jose-fin/JosefinSlab-SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/hk-grotesk/HKGrotesk-Medium.otf
+        - asset: assets/fonts/jose-fin/JosefinSlab-Medium.ttf
           weight: 500
-        - asset: assets/fonts/hk-grotesk/HKGrotesk-Regular.otf
+        - asset: assets/fonts/jose-fin/JosefinSlab-Regular.ttf
           weight: 400
-        - asset: assets/fonts/hk-grotesk/HKGrotesk-Light.otf
+        - asset: assets/fonts/jose-fin/JosefinSlab-Light.ttf
           weight: 300
-        - asset: assets/fonts/hk-grotesk/HKGrotesk-Light.otf
-          weight: 200
-        - asset: assets/fonts/hk-grotesk/HKGrotesk-Light.otf
-          weight: 100
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/roboto/Roboto-Black.ttf
+          weight: 900
+        - asset: assets/fonts/roboto/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/roboto/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/roboto/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/roboto/Roboto-Light.ttf
+          weight: 300
+
+#  fonts:
+#    - family: HKGrotesk
+#      fonts:
+#        - asset: assets/fonts/hk-grotesk/HKGrotesk-Black.otf
+#          weight: 900
+#        - asset: assets/fonts/hk-grotesk/HKGrotesk-Black.otf
+#          weight: 800
+#        - asset: assets/fonts/hk-grotesk/HKGrotesk-Bold.otf
+#          weight: 700
+#        - asset: assets/fonts/hk-grotesk/HKGrotesk-SemiBold.otf
+#          weight: 600
+#        - asset: assets/fonts/hk-grotesk/HKGrotesk-Medium.otf
+#          weight: 500
+#        - asset: assets/fonts/hk-grotesk/HKGrotesk-Regular.otf
+#          weight: 400
+#        - asset: assets/fonts/hk-grotesk/HKGrotesk-Light.otf
+#          weight: 300
+#        - asset: assets/fonts/hk-grotesk/HKGrotesk-Light.otf
+#          weight: 200
+#        - asset: assets/fonts/hk-grotesk/HKGrotesk-Light.otf
+#          weight: 100

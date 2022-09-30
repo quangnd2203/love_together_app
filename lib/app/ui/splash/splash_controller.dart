@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,23 +10,16 @@ import '../ui.dart';
 class SplashController extends BaseController {
   @override
   Future<void> onInit() async {
-    setLoading(true);
     super.onInit();
-    await preloadAssets();
     await getConfig();
     await getProfile();
-    setLoading(false);
   }
 
   Future<void> getConfig() async {}
 
   Future<void> getProfile() async {
+    await Future.delayed(const Duration(seconds: 3));
     Get.offAllNamed(Routes.NAVIGATION);
   }
 
-  Future<void> preloadAssets() async {
-    for(final AppImages image in AppImages.values){
-      await precacheImage(AssetImage(image.value), Get.context!);
-    }
-  }
 }

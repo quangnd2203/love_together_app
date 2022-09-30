@@ -5,7 +5,7 @@ import '../../../constants/app_colors.dart';
 import '../../../constants/app_images.dart';
 
 class NavigationSubIcons extends StatefulWidget {
-  const NavigationSubIcons({Key? key}) : super(key: key);
+  const NavigationSubIcons({super.key});
 
   @override
   State<NavigationSubIcons> createState() => _NavigationSubIconsState();
@@ -42,11 +42,11 @@ class _NavigationSubIconsState extends State<NavigationSubIcons> {
               ),
               secondChild: const SizedBox(width: 50,),
               crossFadeState: isOpened ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-              duration: const Duration(milliseconds: 300),
+              duration: Duration(milliseconds: isOpened ? 450 : 300),
             ),
             AnimatedScale(
               scale: isOpened ? 1 : -1,
-              duration: const Duration(milliseconds: 300),
+              duration: Duration(milliseconds: isOpened ? 450 : 300),
               child: buildIcons(AppImages.navigationArrow.value, onTap: () {
                 setState(() {
                   isOpened = !isOpened;

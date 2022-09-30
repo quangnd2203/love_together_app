@@ -21,7 +21,7 @@ class WidgetEmpty extends StatelessWidget {
           children: [
             Image.asset(AppImages.error.value, scale: 3, color: AppColors.primary,),
             const SizedBox(height: 16,),
-            Text('Không có dữ liệu', style: AppTextStyles.normalSemiBold,),
+            Text('Không có dữ liệu', style: AppTextStyles.normalBold,),
             const SizedBox(height: 50,)
           ],
         ),

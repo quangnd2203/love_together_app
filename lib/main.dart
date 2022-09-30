@@ -52,6 +52,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    preloadAssets();
     AppDeviceInfo.init();
   }
 
@@ -65,6 +66,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     print('ChangeAppLifecycleState: $state');
   }
+
+  Future<void> preloadAssets() async {
+    for(final AppImages image in AppImages.values){
+      await precacheImage(AssetImage(image.value), context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return NotificationListener<OverscrollIndicatorNotification>(
@@ -74,8 +82,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       },
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
+        title: APP_NAME,
         initialRoute: Routes.SPLASH,
-        defaultTransition: Transition.cupertino,
+        defaultTransition: Transition.fade,
         getPages: AppPages.pages,
         locale: const Locale('vi', 'VN'),
         translationsKeys: AppTranslation.translations,

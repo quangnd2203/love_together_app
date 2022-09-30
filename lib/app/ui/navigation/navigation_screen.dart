@@ -103,7 +103,7 @@ class NavigationScreen extends BaseScreen<NavigationController> {
                 radius: 26,
                 backgroundColor: Colors.white,
                 child: SvgPicture.asset(
-                  AppImages.homeHeart.value,
+                  AppImages.navigationHeart.value,
                 ),
               ),
             ),

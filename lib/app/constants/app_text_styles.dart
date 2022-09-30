@@ -17,32 +17,36 @@ class AppFontSize {
 class AppTextStyles {
   AppTextStyles._();
 
-  static String get fontFamilyHkGrotesk => 'HKGrotesk';
+  static String get fontJoseFin => 'Josefin';
+  static String get fontRoboto => 'Roboto';
 
-  static TextStyle get normal => TextStyle(
+  static TextStyle get joseFinBold => TextStyle(
     height: AppFontSize.fontHeight,
-    fontFamily: fontFamilyHkGrotesk,
+    fontFamily: fontJoseFin,
+    color: AppColors.text,
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSize.fontText,
+  );
+
+  static TextStyle get normalMedium => TextStyle(
+    height: AppFontSize.fontHeight,
+    fontFamily: fontRoboto,
     color: AppColors.text,
     fontWeight: FontWeight.w500,
     fontSize: AppFontSize.fontText,
   );
 
-  static TextStyle get normalBold => normal.copyWith(
+  static TextStyle get normalBold => normalMedium.copyWith(
     fontSize: AppFontSize.fontText,
     fontWeight: FontWeight.w700,
   );
 
-  static TextStyle get normalBoldBlack => normal.copyWith(
+  static TextStyle get normalBoldBlack => normalMedium.copyWith(
     fontSize: AppFontSize.fontText,
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle get normalSemiBold => normal.copyWith(
-    fontSize: AppFontSize.fontText,
-    fontWeight: FontWeight.w600,
-  );
-
-  static TextStyle get normalRegular => normal.copyWith(
+  static TextStyle get normalRegular => normalMedium.copyWith(
     fontSize: AppFontSize.fontText,
     fontWeight: FontWeight.w400,
   );
