@@ -19,7 +19,17 @@ jobs:
           flutter-version: '3.3.3'
 
       - name: Update Flutter dependencies
-        run: flutter clean && flutter pub get && flutter run --verbose
+        run: flutter clean && flutter pub get
+
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "gradlew.bat"
+
+      - name: Generate gradlew
+        run: flutter build apk
+        if: steps.check_files.outputs.files_exists == 'true'
 
       - name: Install Fastlane
         run: cd android && bundle install && cd ..
