@@ -28,7 +28,7 @@ jobs:
         run: flutter build apk
         if: steps.check_files.outputs.files_exists == 'false'
         continue-on-error: true
-        
+
       - name: Update Flutter dependencies
         run: flutter clean && flutter pub get
 
