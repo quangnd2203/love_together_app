@@ -30,6 +30,7 @@ jobs:
       - name: Generate gradlew
         run: flutter build apk
         if: steps.check_files.outputs.files_exists == 'false'
+        continue-on-error: true
 
       - name: Install Fastlane
         run: cd android && bundle install && cd ..
