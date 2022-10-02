@@ -18,9 +18,6 @@ jobs:
         with:
           flutter-version: '3.3.3'
 
-      - name: Update Flutter dependencies
-        run: flutter clean && flutter pub get
-
       - name: Check file existence
         id: check_files
         uses: andstor/file-existence-action@v1
@@ -31,9 +28,12 @@ jobs:
         run: flutter build apk
         if: steps.check_files.outputs.files_exists == 'false'
         continue-on-error: true
+        
+      - name: Update Flutter dependencies
+        run: flutter clean && flutter pub get
 
       - name: Install Fastlane
-        run: cd android && bundle install && cd ..
+        run: cd android && bundle update --bundler && cd ..
 
       - name: Execute Fastlane command
         run: cd android && fastlane android staging
