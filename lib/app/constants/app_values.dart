@@ -24,7 +24,7 @@ const String PRESS_CONTINUED = 'Ấn để tiếp tục...';
 const String ONBOARDING_TEXT_ONE = '''
 Hello cục Cưng đáng iuuu của anhhhhh!!!!
 
-Zậy là đã bước qua tròn 2 năm iuuu nhau ròi ha, ùi ui mới đó mà nhanh thiệt luôn ơ ọ. Cảm giác ngày 1/10/2020 chỉ mới vừa trôi qua cách đây mấy ngày thoi ó em iu. Nhanh thiệt luôn ơ ọ. Trong anh cảm xúc bây giờ nó lạ lắm luôn ơ cục Cưng của anhhhh.... Vừa bồi hồi, vừa xúc động, mà vừa xao xuyến nó lạ lắm ọooo....
+Zậy là mình đã bước qua tròn 2 năm iuuu nhau ròi ha, ùi ui mới đó mà nhanh thiệt luôn ơ ọ. Cảm giác ngày 1/10/2020 với anh chỉ mới vừa trôi qua cách đây mấy ngày thoi ó em iu. Nhanh thiệt luôn ơ ọ. Trong anh cảm xúc bây giờ nó lạ lắm luôn ơ cục Cưng của anhhhh.... Vừa bồi hồi, vừa xúc động, mà vừa xao xuyến nó lạ lắm ọooo....
 ''';
 
 const String ONBOARDING_TEXT_TWO = '''

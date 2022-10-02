@@ -1,0 +1,30 @@
+name: Publish Android to Play Store
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release-android:
+    name: Build and release Android app
+    #if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.3.3'
+
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.x"
+
+      - name: Install Fastlane
+        run: cd android && bundle update --bundler && cd ..
+
+      - name: Install packages
+        run: flutter pub get
+
+      - name: Execute Fastlane command
+        run: cd android && bundle exec fastlane android staging
