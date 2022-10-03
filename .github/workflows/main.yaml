@@ -18,7 +18,7 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           gradle-version: release-candidate
-      - run: gradle build --dry-run # just test build configuration
+      - run: cd android && gradle build --dry-run # just test build configuration
 
       - uses: actions/setup-ruby@v1
         with:
