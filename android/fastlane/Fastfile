@@ -5,6 +5,7 @@ platform :android do
     desc 'For develop build android test'
     lane :develop do
         gradle(
+            project_dir: 'android/'
             task: 'assemble',
             build_type: 'Release',
             properties: {
@@ -16,6 +17,7 @@ platform :android do
     desc 'For develop build android staging'
     lane :staging do |options|
         gradle(
+            project_dir: 'android/'
             task: 'assemble',
             build_type: 'Release',
             properties: {
@@ -34,6 +36,7 @@ platform :android do
     desc 'For production build android'
     lane :production do
         gradle(
+            project_dir: 'android/'
             task: 'assemble',
             build_type: 'Realse',
             properties: {
