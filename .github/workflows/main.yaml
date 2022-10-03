@@ -11,15 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
-        with:
-          distribution: temurin
-          java-version: 11
-      - uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: release-candidate
-      - run: cd android && gradle build --dry-run # just test build configuration
-
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: "2.x"
