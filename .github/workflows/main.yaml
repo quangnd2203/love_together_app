@@ -19,15 +19,8 @@ jobs:
         with:
           flutter-version: '3.3.3'
 
-#      - name: Check file existence
-#        id: check_files
-#        uses: andstor/file-existence-action@v1
-#        with:
-#          files: "gradlew.bat"
-#
 #      - name: Generate gradlew
 #        run: flutter build apk
-#        if: steps.check_files.outputs.files_exists == 'false'
 #        continue-on-error: true
 
       - name: Update Flutter dependencies
@@ -44,23 +37,22 @@ jobs:
 #    runs-on: macos-latest
 #    steps:
 #      - uses: actions/checkout@v3
-#      - uses: actions/setup-node@v3
-#        with:
-#          node-version: "16.x"
 #      - uses: actions/setup-ruby@v1
 #        with:
 #          ruby-version: "2.x"
+#
+#      - uses: subosito/flutter-action@v1
+#        with:
+#          flutter-version: '3.3.3'
+#
 #      - name: Install Fastlane
-#        run: cd ios && gem install bundler:2.3.15 && bundle install && cd ..
-#      # - name: Execute Fastlane command
-#      #   run: cd android && fastlane staging
-#      - name: Install packages
-#        run: yarn install
+#        run: cd ios && bundle update --bundler && cd ..
+#
+#      - name: Update Flutter dependencies
+#        run: flutter clean && flutter pub get
+#
 #      - name: install pods
 #        run: cd ios && gem install cocoapods && pod install && cd ..
+#
 #      - name: Execute Fastlane command
-#        run: cd ios && fastlane staging
-#        env:
-#          USER_NAME: ${{ secrets.USER_NAME }}
-#          SPEC_PASS: ${{ secrets.APPLE_APPLICATION_SPECIFIC_PASSWORD}}
-#          GIT_PERSONAL_TOKEN: ${{ secrets.GIT_PERSONAL_TOKEN }}
+#        run: cd ios && fastlane ios staging
